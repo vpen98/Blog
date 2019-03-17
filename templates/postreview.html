@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block postcomment  %}
+<form  action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="comment" placeholder="内容" >
+    <input type="submit"  value="提交">
+</form>
+{% endblock %}

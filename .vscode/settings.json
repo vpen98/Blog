@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "E:\\PyChamDjango\\venv\\Scripts\\python.exe",    
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django",
+        "--errors-only"
+    ],
+    "git.ignoreLimitWarning": true
+
+}
