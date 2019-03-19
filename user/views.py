@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.utils import timezone
 from user.models import User, Article, Review
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger # 文章分页
 import hashlib # 导入哈希库
 
 
@@ -78,9 +79,12 @@ def my_login_required(func):
     return check_login_status
 
 
-# 主页展示页
+# 主页展示页 实现分页
 def homepage(request):
-    articles = Article.objects.all() # 获取所有文章
+    article_list = Article.objects.all() # 获取所有文章
+    paginator = Paginator(article_list, 5)  # 实例化一个分页对象, 每页显示5个
+    page = request.GET.get('page')      # 从URL通过get页码，如?page=3
+    articles = paginator.get_page(page)  # 获取某页对应的记录
     now = timezone.now() # 获取当前时间
     login_status = request.session.get('is_login', None)
     return render(request,'homepage.html',{'articles':articles, "time":now,'login_status':login_status})

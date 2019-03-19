@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 # 帐号
 class User(models.Model):
@@ -19,7 +20,7 @@ class User(models.Model):
 # 文章
 class Article(models.Model):
     title = models.CharField('标题', max_length=30, null=False)
-    content = models.TextField('内容')
+    content = RichTextField(blank=True,null=True,verbose_name="内容")
     pub_data = models.DateTimeField('发布时间', default=timezone.now)
     looks = models.PositiveIntegerField('浏览数', default=0)
     review_number = models.PositiveIntegerField('评论数量',default=0)
