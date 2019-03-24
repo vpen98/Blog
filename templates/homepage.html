@@ -18,7 +18,7 @@
 <div class="panel panel-default" >
     <div class="panel-heading" >
         <p style = 'font-family:微软雅黑;font-size: 16pt;font-weight: bold;' align='center'>
-            <a href="/{{article.id}}">{{article.title}}</a>
+            <a href="{% url 'showpage' article.id %}">{{article.title}}</a>
          </p>
     </div>
 

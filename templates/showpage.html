@@ -19,13 +19,13 @@
 {% block postcomment  %} {% endblock %}
 
 {% block comment  %} 
-<a href="/{{articles.id}}/{{articles.id}}/">写评论</a>
+<a href=" {% url 'article_review' articles.id articles.id %} ">写评论</a>
 <p><span style="color:rgb(0, 174, 255);">评论数:{{articles.review_number}}</span></p>
 {% for review in reviews %}
 
-<p><span style="color:rgb(0, 174, 255);">{{review.comment_uesr}}:</span></p>
+<p><span style="color:rgb(0, 174, 255);">{{review.comment_uesr}}:{{review.comment}}</span></p>
+
 <h6><span style="color:rgb(43, 255, 0);">{{review.review_data}}</span></h6>
-<p><span style="color:rgb(37, 21, 212);">{{review.comment}}</span></p>
 
 <br>
 {% endfor %}

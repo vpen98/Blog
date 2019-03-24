@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.template.loader import get_template
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from datetime import datetime
 from django.utils import timezone
 from user.models import User, Article, Review
@@ -136,5 +136,5 @@ def article_review(request,id,pk):
         # 就是多对一，一是必须是一个完整的模型
         review_article = Article.objects.get(id=pk)
         Review.objects.create(comment_uesr=comment_uesr.nicename, comment=comment, article=review_article)
-        return redirect('../') # 重定向到上一页
+        return HttpResponseRedirect("../") # 重定向到上一页
     return render(request, 'postreview.html')
